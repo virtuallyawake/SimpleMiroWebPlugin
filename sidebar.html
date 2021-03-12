@@ -50,7 +50,8 @@
     <script>
       miro.onReady(async () => {
 	  const data = await miro.board.__getParamsFromURL()
-	  console.log("data: " + data)
+	  console.log("data:" )
+	  console.log(data)
         const btn = document.querySelector('button')
 	miro.addListener('DATA_BROADCASTED', event => {
 	    console.log("DATA_BROADCASTED")
