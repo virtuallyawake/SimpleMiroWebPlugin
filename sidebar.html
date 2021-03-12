@@ -48,7 +48,7 @@
     </div>
     <script src="https://miro.com/app/static/sdk.1.1.js"></script>
     <script>
-      miro.onReady(() => {
+      miro.onReady(async () => {
 	  const data = await miro.board.__getParamsFromURL()
 	  console.log("data: " + data)
         const btn = document.querySelector('button')
