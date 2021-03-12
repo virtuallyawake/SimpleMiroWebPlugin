@@ -42,6 +42,9 @@
         })
 
           await miro.board.ui.openLeftSidebar('sidebar.html')
+	  const [sticker] = await miro.board.widgets.create({type: "sticker"})
+	  console.log("New sticker id: " + sticker.id)
+	  await miro.board.widgets.update({id: sticker.id, metadata: {"3074457355255664798": {"data": "Hello"}}})
       })
     </script>
   </body>
