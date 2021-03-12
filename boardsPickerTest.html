@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Miro Hello World App</title>
+    <meta charset="utf8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+    <link rel="stylesheet" href="https://unpkg.com/mirotone/dist/styles.css" />
+    <style>
+      *,
+      *:before,
+      *:after {
+        box-sizing: border-box;
+      }
+
+      body {
+        line-height: 1.5;
+        margin: 0;
+      }
+
+      .wrapper {
+        padding: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+
+    <label>
+      Choose picker action
+      <select>
+        <option value="select">select</option>
+        <option value="access-link">access-link</option>
+      </select>
+    </label>
+    <button>
+      Open Boards Picker
+    </button>
+    <textarea class="results"></textarea>
+
+    <script type="text/javascript" src="https://miro.com/app/static/boardsPicker.1.0.js"></script>
+
+    <script>
+      var button = document.querySelector('button')
+      var actionSelect = document.querySelector('select')
+      var resultsBox = document.querySelector('.results')
+      button.addEventListener('click', onSomeButtonClick)
+      
+      function onSomeButtonClick() {
+	  miroBoardsPicker.open({
+	      clientId: <APP_ID>,
+	      action: 'select',
+	      success: function (result) {
+		  console.log(result)
+	      }
+	  })
+      }
+    </script>
+  </body>
+</html>

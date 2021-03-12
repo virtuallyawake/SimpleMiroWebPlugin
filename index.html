@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Miro Hello World App</title>
+    <meta charset="utf8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+    <link rel="stylesheet" href="https://unpkg.com/mirotone/dist/styles.css" />
+    <style>
+      *,
+      *:before,
+      *:after {
+        box-sizing: border-box;
+      }
+
+      body {
+        line-height: 1.5;
+        margin: 0;
+      }
+
+      .wrapper {
+        padding: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="https://miro.com/app/static/sdk.1.1.js"></script>
+    <script>
+      miro.onReady(async () => {
+        await miro.initialize({
+          extensionPoints: {
+            bottomBar: {
+              title: 'Hello World!',
+              svgIcon:
+                '<circle cx="12" cy="12" r="9" fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"/>',
+              onClick: () => {
+                miro.board.ui.openLeftSidebar('sidebar.html')
+		  miro.broadcastData({value: "Hello world"})
+              },
+            },
+          },
+        })
+
+          await miro.board.ui.openLeftSidebar('sidebar.html')
+      })
+    </script>
+  </body>
+</html>

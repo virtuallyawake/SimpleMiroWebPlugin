@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Miro Hello World App</title>
+    <meta charset="utf8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+    <link rel="stylesheet" href="https://unpkg.com/mirotone/dist/styles.css" />
+    <style>
+      *,
+      *:before,
+      *:after {
+        box-sizing: border-box;
+      }
+
+      body {
+        line-height: 1.5;
+        margin: 0;
+      }
+
+      .wrapper {
+        padding: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <h1>Hi there!</h1>
+      <p>Congratulations on installing Miro <code>app</code></p>
+      <p>In this section we will list some useful resources for you</p>
+      <ol>
+        <li>
+          You can check the
+          <a href="https://developers.miro.com/" rel="noopener noreferrer" target="_blank">documentation</a>
+          here
+        </li>
+        <li>
+          If you have questions you can ask them on
+          <a href="https://miro.slack.com/archives/CA12FT5UJ" rel="noopener noreferrer" target="_blank"
+            >#tm_platform_en</a
+          >
+          here
+        </li>
+      </ol>
+      <button type="button" class="button button--primary">Click here to create your first widget</button>
+      <br />
+      <br />
+      <small>You can bring back this modal again at any time, by clicking the Circle icon in the bottom toolbar</small>
+    </div>
+    <script src="https://miro.com/app/static/sdk.1.1.js"></script>
+    <script>
+      miro.onReady(() => {
+        const btn = document.querySelector('button')
+        btn.addEventListener('click', async () => {
+          try {
+            const sticker = (
+              await miro.board.widgets.create({
+                type: 'sticker',
+                text: 'Congratulations! 🎉, you have built your first Miro plugin',
+              })
+            )[0]
+
+              await miro.board.viewport.zoomToObject(sticker)
+	      miro.addListener("DATA_BROADCASTED", (event) => {
+		  console.log(event)
+	      })
+          } catch (error) {
+            alert('Something went wrong, check the developer console')
+          }
+        })
+      })
+    </script>
+  </body>
+</html>
