@@ -27,6 +27,10 @@
     <script>
       miro.onReady(async () => {
         await miro.initialize({
+          const owner = (await miro.board.info.get()).owner
+          console.log("Owner: ", owner)
+	  const onlineUsers = (await miro.board.getOnlineUsers())
+          console.log("Online users: ", onlineUsers)
           extensionPoints: {
             bottomBar: {
               title: 'Hello World!',
